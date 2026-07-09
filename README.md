@@ -12,7 +12,7 @@ TechSolutions necesita un módulo de administración de usuarios que permita:
 
 > **Nota importante:** DummyJSON simula las operaciones de creación, actualización y eliminación. Aunque la API responde con éxito, los cambios **no se almacenan permanentemente** en su base de datos.
 
-## 🛠️ Tecnologías utilizadas
+##  Tecnologías utilizadas
 
 - **Angular** (standalone components)
 - **TypeScript**
