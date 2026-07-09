@@ -1,0 +1,81 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Administración de Usuarios - TechSolutions</h2>
+
+  <div *ngIf="mensaje" class="alert alert-success">{{ mensaje }}</div>
+
+  <!-- GET -->
+  <h4>Lista de Usuarios</h4>
+  <table class="table table-striped table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th><th>Nombre</th><th>Apellido</th><th>Edad</th><th>Correo</th><th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of usuarios">
+        <td>{{ user.id }}</td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.age }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm me-2" (click)="seleccionarParaEditar(user)">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="eliminarUsuario(user.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <!-- POST -->
+  <h4>Registrar Nuevo Usuario</h4>
+  <form (ngSubmit)="registrarUsuario()" class="row g-3 mb-4">
+    <div class="col-md-3">
+      <label class="form-label">Nombre</label>
+      <input type="text" class="form-control" [(ngModel)]="nuevoUsuario.firstName" name="firstName" required>
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">Apellido</label>
+      <input type="text" class="form-control" [(ngModel)]="nuevoUsuario.lastName" name="lastName" required>
+    </div>
+    <div class="col-md-2">
+      <label class="form-label">Edad</label>
+      <input type="number" class="form-control" [(ngModel)]="nuevoUsuario.age" name="age" required>
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">Correo</label>
+      <input type="email" class="form-control" [(ngModel)]="nuevoUsuario.email" name="email" required>
+    </div>
+    <div class="col-md-1 d-flex align-items-end">
+      <button type="submit" class="btn btn-primary">Registrar</button>
+    </div>
+  </form>
+
+  <hr>
+
+  <!-- PUT -->
+  <h4>Actualizar Usuario</h4>
+  <p *ngIf="idEditar === null" class="text-muted">Da clic en "Editar" en la tabla para actualizar un usuario.</p>
+  <form *ngIf="idEditar !== null" (ngSubmit)="actualizarUsuario()" class="row g-3">
+    <div class="col-md-3">
+      <label class="form-label">Nombre</label>
+      <input type="text" class="form-control" [(ngModel)]="usuarioEditar.firstName" name="editFirstName" required>
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">Apellido</label>
+      <input type="text" class="form-control" [(ngModel)]="usuarioEditar.lastName" name="editLastName" required>
+    </div>
+    <div class="col-md-2">
+      <label class="form-label">Edad</label>
+      <input type="number" class="form-control" [(ngModel)]="usuarioEditar.age" name="editAge" required>
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">Correo</label>
+      <input type="email" class="form-control" [(ngModel)]="usuarioEditar.email" name="editEmail" required>
+    </div>
+    <div class="col-md-1 d-flex align-items-end">
+      <button type="submit" class="btn btn-success">Guardar</button>
+    </div>
+  </form>
+</div>
